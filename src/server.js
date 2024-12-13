@@ -6,8 +6,11 @@ const userRoutes = require('./routes/userRoutes');        // Import user routes
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
-app.use(cors());
+app.use(cors({
+    origin: 'https://rococo-gecko-18ba50.netlify.app/', // Replace with your actual Netlify frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Allowed HTTP methods
+    credentials: true                           // If you need to send cookies or headers
+}));
 app.use(express.json());
 
 // Use the routes for meetings and users
